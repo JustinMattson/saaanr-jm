@@ -1,0 +1,34 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace Keepr.Models
+{
+  public class Keep
+  {
+    public int Id { get; set; }
+    public string UserId { get; set; }
+
+    [Required]
+    [MinLength(1)]
+    public string Name { get; set; }
+
+    [Required]
+    [MinLength(1)]
+    public string Description { get; set; }
+
+    [Required]
+    [MinLength(1)]
+    public string Img { get; set; }
+
+    [Required]
+    public bool IsPrivate { get; set; }
+    public int Views { get; set; }
+    public int Shares { get; set; }
+    public int Keeps { get; set; }
+
+  }
+  public class VaultKeepViewModel : Keep
+  {
+    public int VaultKeepId { get; set; }
+    public int VaultId { get; set; }
+  }
+}
