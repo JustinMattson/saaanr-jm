@@ -1,12 +1,25 @@
 USE saaanr;
 -- NOTE all tables can have duplicate rows as there is only one primary key on id which does not guarantee uniqueness other columns...
 
+CREATE TABLE profiles (
+    id int NOT NULL AUTO_INCREMENT,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    picture VARCHAR(255) NOT NULL,
+    phone VARCHAR(255) NOT NULL,
+    userId VARCHAR(255),
+    member tinyint DEFAULT 0,
+    INDEX userId (userId),  
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE vaults (
     id int NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
     userId VARCHAR(255),
-    INDEX userId (userId),  
+    INDEX userId (userId),
     PRIMARY KEY (id)
 );
 
@@ -260,3 +273,9 @@ SELECT * FROM keeps WHERE id>=0;
 -- HAVING COUNT(userId) > 1
 --   AND COUNT(vaultId) > 1
 --   AND COUNT(keepId) > 1;
+
+      INSERT INTO profiles
+      (firstname, lastname, email, picture, phone, userId, member)
+      VALUES
+      ("Justin", "Mattson", "toyvo252@hotmail.com", "", "2084240740", 1, 0);
+      SELECT LAST_INSERT_ID();

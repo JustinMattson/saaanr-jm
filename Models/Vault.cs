@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Keepr.Models
+namespace SaaaNR.Models
 {
   public class Vault
   {

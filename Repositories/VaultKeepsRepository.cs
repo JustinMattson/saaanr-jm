@@ -1,10 +1,10 @@
 using System.Data;
 using System.Collections.Generic;
 using Dapper;
-using Keepr.Models;
+using SaaaNR.Models;
 using System;
 
-namespace Keepr.Repositories
+namespace SaaaNR.Repositories
 {
   public class VaultKeepsRepository
   {

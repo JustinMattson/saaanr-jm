@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using Keepr.Models;
-using Keepr.Services;
+using SaaaNR.Models;
+using SaaaNR.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Keepr.Controllers
+namespace SaaaNR.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]

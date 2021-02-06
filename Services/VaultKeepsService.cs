@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Keepr.Models;
-using Keepr.Repositories;
+using SaaaNR.Models;
+using SaaaNR.Repositories;
 
 
-namespace Keepr.Services
+namespace SaaaNR.Services
 {
   public class VaultKeepsService
   {
