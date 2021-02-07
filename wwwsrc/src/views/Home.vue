@@ -8,9 +8,12 @@
         <img class="border border-light" src="../assets/SAAANR.png" style="max-width:100%;max-height:100%;" alt="SAAA Northern Rockies crest badge viking longboat" />
       </div>
       <div class="col-sm-6 order-sm-2 text-left m-0 align-self-center">
-        <h2 class="p-3 m-0">Non-Profit </h2>
-        <h2 class="p-3 m-0">Contact Information</h2>
-        <h2 class="p-3 m-0">Paypal/Donation</h2>
+        <h2 class="p-3 m-0"><small>The Northern Rockies is a 501-(c)3 (81-4950693) charitable organization
+        that strives
+        to educate the communities in which we work about Scottish culture and the history of Scottish Highland Games.
+        Our group of highly motivated volunteers help Scottish Festivals run Scottish Highland Games or Heavy Events
+        around the world. We are based out of Boise Idaho, but have sister chapters in Oregon, Washington, Montana, and
+        Alaska.</small></h2>
       </div>
     </div>
     <small class="fixed-bottom">

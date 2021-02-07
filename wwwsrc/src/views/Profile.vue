@@ -32,7 +32,7 @@ export default {
     };
   },
   async mounted() {
-    await this.$store.dispatch("getProfiles");
+    await this.$store.dispatch("getProfile");
   },
   computed:{
     profile() {

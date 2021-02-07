@@ -24,15 +24,11 @@ export default new Vuex.Store({
     userVKs: [],
     vaultKeeps: [],
     keepsByVault: [],
-    profiles: [],
     activeKeep: {},
     activeVault: {},
-    activeProfile: {},
+    profile: {},
   },
   mutations: {
-    setContacts(state, contacts) {
-      state.contacts = contacts;
-    },
     //#region mutation KEEPS
     setPublicKeeps(state, keeps) {
       state.publicKeeps = keeps;
@@ -99,34 +95,29 @@ export default new Vuex.Store({
     },
     //#endregion mutation VAULTKEEPS
 
-    //region mutation PROFILES
-    setProfiles(state, profiles) {
-      state.profiles = profiles;
+    // region mutation CONTACTS
+    setContacts(state, contacts) {
+      state.contacts = contacts;
     },
-    setActiveProfile(state, profile) {
+    //#endregion mutation CONTACTS
+
+    //region mutation PROFILES - check buglog for advice?
+    setProfile(state, profile) {
       state.activeProfile = profile;
-    },
-    addProfile(state, newProfile) {
-      state.profiles.push(newProfile);
     },
     updateProfile(state, update) {
       let index = -1;
-      index = state.profiles.findIndex((p) => p.id == update.id);
-      state.profiles.splice(index, 1);
-      state.profiles.push(update);
+      index = state.profile.findIndex((p) => p.id == update.id);
+      state.profile.splice(index, 1);
+      state.profile.push(update);
     },
-    removeProfile(state, id) {
-      let index = state.profile.findIndex((p) => p.id == id);
-      state.profiles.splice(index, 1);
-    },
-    ////#endregion mutation PROFILES
+    //#endregion mutation PROFILES
   },
 
   actions: {
     setBearer({ dispatch }, bearer) {
       api.defaults.headers.authorization = bearer;
-      dispatch("getActiveProfile");
-      dispatch("getProfiles");
+      dispatch("getProfile");
       dispatch("getUserVaults");
       dispatch("getUserKeeps");
       dispatch("getUserVKs");
@@ -137,14 +128,6 @@ export default new Vuex.Store({
       api.defaults.headers.authorization = "";
     },
 
-    async getContacts({ commit, dispatch }) {
-      try {
-        let res = await api.get("contacts");
-        commit("setContacts", res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
     //#region actions KEEPS
     // getKeeps only returns isPrivate = false (Public)
     async getKeeps({ commit, dispatch }) {
@@ -299,57 +282,30 @@ export default new Vuex.Store({
     },
     //#endregion actions VAULTKEEPS
 
+    async getContacts({ commit, dispatch }) {
+      try {
+        let res = await api.get("contacts");
+        commit("setContacts", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+
     //#region actions PROFILES
-    async getActiveProfile({ commit, dispatch }, id) {
+    async getProfile({ commit, dispatch }, id) {
       try {
         let id = 1;
-        let res = await api.get("profiles/" + id);
+        let res = await api.get("profile/" + id);
         commit("setActiveProfile", res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async getProfiles({ commit, dispatch }) {
-      try {
-        let res = await api.get("profiles");
-        commit("setProfiles", res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async createProfile({ commit, dispatch }, newProfile) {
-      try {
-        let res = await api.post("profiles", newProfile);
-        commit("addProfile", res.data);
-        commit("setActiveProfile", res.data);
-        return res.data;
       } catch (error) {
         console.error(error);
       }
     },
     async editProfile({ commit, dispatch }, update) {
       try {
-        let res = await api.put("profiles/" + update.id, update);
+        let res = await api.put("profile/" + update.id, update);
         commit("updateProfile", res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    // This might not be ideal if you are an admin looking to update member/user status
-    async getProfileById({ commit, dispatch }, id) {
-      try {
-        let res = await api.get("profiles/" + id);
-        commit("setActiveProfile", res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    // This to be done by self or admin only.
-    async deleteProfile({ commit, dispatch }, id) {
-      try {
-        let res = await api.delete("profiles/" + id);
-        commit("removeProfile", id);
-        router.push({ name: "dashboard", params: {} });
       } catch (error) {
         console.error(error);
       }

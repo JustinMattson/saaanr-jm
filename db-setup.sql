@@ -312,7 +312,7 @@ SELECT * FROM keeps WHERE id>=0;
         1
     );
 
-    SELECT * FROM contacts;
+    SELECT * FROM profiles;
 
     DELETE FROM contacts WHERE id=3;
 
