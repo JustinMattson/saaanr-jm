@@ -80,12 +80,12 @@
           v-show="!keep.isPrivate && $auth.isAuthenticated"
         >&nbsp;Add to Vault</i>
         <div id="vaultList" class="pl-3" v-show="showVaultList">
-          <saveComponent
+          <VKsaveComponent
             v-for="vault in myVaults"
             :key="vault.id"
             :vault="vault"
             :keep="keep"
-          >{{ vault.name }}</saveComponent>
+          >{{ vault.name }}</VKsaveComponent>
         </div>
         <button
           type="button"
@@ -149,7 +149,7 @@
 </template>
 
 <script>
-import SaveComponent from "@/components/SaveComponent.vue";
+import VKsaveComponent from "@/components/VKsaveComponent.vue";
 import swal from "sweetalert";
 export default {
   name: "keepdetails",
@@ -237,7 +237,7 @@ export default {
     },
   },
   components: {
-    SaveComponent,
+    VKsaveComponent,
   },
 };
 </script>

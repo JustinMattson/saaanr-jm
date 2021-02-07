@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "SaveComponent",
+  name: "VKsaveComponent",
   props: ["keep", "vault"],
   computed: {},
   methods: {
