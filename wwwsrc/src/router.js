@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import About from "./views/About.vue";
+import Contacts from "./views/Contacts.vue";
 import Dashboard from "./views/Dashboard.vue";
 import Database from "./views/Database.vue";
 import Home from "./views/Home.vue";
@@ -26,6 +27,12 @@ export default new Router({
       path: "/about",
       name: "about",
       component: About,
+    },
+    {
+      path: "/contacts",
+      name: "contacts",
+      component: Contacts,
+      //beforeEnter: authGuard,
     },
     {
       path: "/dashboard",

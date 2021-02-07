@@ -61,6 +61,13 @@
           <router-link class="nav-link" :to="{ name: 'dashboard' }"
             >My-Dashboard</router-link>
         </li>
+        <li class="nav-item"  
+        v-if="$auth.isAuthenticated"
+        :class="{ active: $route.name == 'contacts' }">
+          <router-link :to="{ name: 'contacts' }" class="nav-link"
+            >Contacts</router-link
+          >
+        </li>
       </ul>
       <span class="navbar-text">
         <button

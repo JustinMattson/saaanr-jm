@@ -34,9 +34,6 @@ export default {
     await this.$store.dispatch("getKeeps");
   },
   computed: {
-    user() {
-      return this.$store.state.user;
-    },
     publicKeeps() {
       return this.$store.state.publicKeeps;
     },
@@ -45,9 +42,9 @@ export default {
     }
   },
   methods: {
-    logout() {
-      this.$store.dispatch("logout");
-    }
+    // logout() {
+    //   this.$store.dispatch("logout");
+    // }
   },
   components: {
     Keep

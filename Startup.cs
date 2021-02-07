@@ -63,8 +63,12 @@ namespace SaaaNR
       services.AddScoped<IDbConnection>(x => CreateDbConnection());
 
       //NOTE REGISTER SERVICES AND REPOSITORIES
+      services.AddTransient<ContactsService>();
+      services.AddTransient<ContactsRepository>();
       services.AddTransient<KeepsService>();
       services.AddTransient<KeepsRepository>();
+      services.AddTransient<ProfilesService>();
+      services.AddTransient<ProfilesRepository>();
       services.AddTransient<VaultsService>();
       services.AddTransient<VaultsRepository>();
       services.AddTransient<VaultKeepsService>();

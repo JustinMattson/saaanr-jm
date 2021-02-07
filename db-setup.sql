@@ -1,16 +1,21 @@
 USE saaanr;
 -- NOTE all tables can have duplicate rows as there is only one primary key on id which does not guarantee uniqueness other columns...
+DROP TABLE profiles;
 
-CREATE TABLE profiles (
+CREATE TABLE contacts (
     id int NOT NULL AUTO_INCREMENT,
     firstname VARCHAR(255) NOT NULL,
     lastname VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    picture VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) NOT NULL,
+    verified tinyint DEFAULT 0,
+    DOB DATETIME DEFAULT CURRENT_TIMESTAMP,
+    picture VARCHAR(255) DEFAULT "https://freepikpsd.com/wp-content/uploads/2019/10/default-user-profile-image-png-2-Transparent-Images-1.png",
+    phone VARCHAR(255),
+    position VARCHAR(255),
     userId VARCHAR(255),
     member tinyint DEFAULT 0,
-    INDEX userId (userId),  
+    showContact tinyint DEFAULT 1,
+    INDEX userId (userId),
     PRIMARY KEY (id)
 );
 
@@ -274,8 +279,41 @@ SELECT * FROM keeps WHERE id>=0;
 --   AND COUNT(vaultId) > 1
 --   AND COUNT(keepId) > 1;
 
-      INSERT INTO profiles
-      (firstname, lastname, email, picture, phone, userId, member)
-      VALUES
-      ("Justin", "Mattson", "toyvo252@hotmail.com", "", "2084240740", 1, 0);
-      SELECT LAST_INSERT_ID();
+    INSERT INTO contacts
+    (firstname, lastname, email, verified, DOB, picture, phone, position, userId, member, showContact)
+    VALUES
+    (
+        "Justin",
+        "Mattson",
+        "toyvo252@hotmail.com",
+        1,
+        "1976-02-19",
+        "https://freepikpsd.com/wp-content/uploads/2019/10/default-user-profile-image-png-2-Transparent-Images-1.png",
+        "2084240740",
+        "Gopher",
+        "auth0|5ede8f4b56d062001333e194",
+        1,
+        1
+    );
+    INSERT INTO contacts
+    (firstname, lastname, email, verified, DOB, picture, phone, position, userId, member, showContact)
+    VALUES
+    (
+        "First",
+        "Last",
+        "someone@somewhere.com",
+        0,
+        "2000-01-31",
+        "https://freepikpsd.com/wp-content/uploads/2019/10/default-user-profile-image-png-2-Transparent-Images-1.png",
+        "1112223333",
+        "Visitor",
+        "",
+        0,
+        1
+    );
+
+    SELECT * FROM contacts;
+
+    DELETE FROM contacts WHERE id=3;
+
+    SELECT LAST_INSERT_ID();

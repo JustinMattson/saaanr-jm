@@ -17,6 +17,7 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
+    contacts: [],
     publicKeeps: [],
     myKeeps: [],
     myVaults: [],
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     activeProfile: {},
   },
   mutations: {
+    setContacts(state, contacts) {
+      state.contacts = contacts;
+    },
     //#region mutation KEEPS
     setPublicKeeps(state, keeps) {
       state.publicKeeps = keeps;
@@ -121,17 +125,26 @@ export default new Vuex.Store({
   actions: {
     setBearer({ dispatch }, bearer) {
       api.defaults.headers.authorization = bearer;
-      dispatch("getActiveProfile")
-      dispatch("getProfiles")
+      dispatch("getActiveProfile");
+      dispatch("getProfiles");
       dispatch("getUserVaults");
       dispatch("getUserKeeps");
       dispatch("getUserVKs");
+      dispatch("getContacts");
       dispatch("getKeeps");
     },
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
 
+    async getContacts({ commit, dispatch }) {
+      try {
+        let res = await api.get("contacts");
+        commit("setContacts", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
     //#region actions KEEPS
     // getKeeps only returns isPrivate = false (Public)
     async getKeeps({ commit, dispatch }) {
