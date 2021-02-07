@@ -22,18 +22,30 @@ namespace SaaaNR.Controllers
 
     // NOTE a basic GET ALL does not make sense since profiles are private, however, in order to get past the HTTP 405, will need to implement a basic get.  This "GetAll" will duplicate GetProfilesByUser functionality.
     [HttpGet]
+
     public ActionResult<IEnumerable<Profile>> Get()
     {
       try
       {
-        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_ps.GetProfilesByUser(userId));
+        return Ok(_ps.Get());
       }
       catch (Exception e)
       {
         return BadRequest(e.Message);
-      }
+      };
     }
+    // public ActionResult<IEnumerable<Profile>> Get()
+    // {
+    //   try
+    //   {
+    //     string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //     return Ok(_ps.GetProfilesByUser(userId));
+    //   }
+    //   catch (Exception e)
+    //   {
+    //     return BadRequest(e.Message);
+    //   }
+    // }
 
     // NOTE both this and the basic Get yield the same results with different route.  Need to ask senior which is preferred.
     // Get all profiles for authorized user

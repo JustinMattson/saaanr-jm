@@ -121,7 +121,8 @@ export default new Vuex.Store({
   actions: {
     setBearer({ dispatch }, bearer) {
       api.defaults.headers.authorization = bearer;
-      dispatch("getMemberProfiles")
+      dispatch("getActiveProfile")
+      dispatch("getProfiles")
       dispatch("getUserVaults");
       dispatch("getUserKeeps");
       dispatch("getUserVKs");
@@ -286,7 +287,16 @@ export default new Vuex.Store({
     //#endregion actions VAULTKEEPS
 
     //#region actions PROFILES
-    async getMemberProfiles({ commit, dispatch }) {
+    async getActiveProfile({ commit, dispatch }, id) {
+      try {
+        let id = 1;
+        let res = await api.get("profiles/" + id);
+        commit("setActiveProfile", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getProfiles({ commit, dispatch }) {
       try {
         let res = await api.get("profiles");
         commit("setProfiles", res.data);

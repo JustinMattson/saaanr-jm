@@ -13,6 +13,11 @@ namespace SaaaNR.Services
       _repo = repo;
     }
 
+    public IEnumerable<Profile> Get()
+    {
+      return _repo.Get();
+    }
+
     public IEnumerable<Profile> GetProfilesByUser(string userId)
     {
       return _repo.GetProfilesByUser(userId);

@@ -14,6 +14,15 @@ namespace SaaaNR.Repositories
       _db = db;
     }
 
+    internal IEnumerable<Profile> Get()
+    {
+      string sql = @"
+      SELECT 
+        * 
+      FROM profiles";
+      return _db.Query<Profile>(sql);
+    }
+
     internal IEnumerable<Profile> GetProfilesByUser(string userId)
     {
       string sql = "SELECT * FROM profiles WHERE userId = @userId;";

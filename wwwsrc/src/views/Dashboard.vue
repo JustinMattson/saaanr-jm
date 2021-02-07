@@ -21,7 +21,7 @@
           data-toggle="modal"
           data-target="#keepModal"
           v-if="$auth.isAuthenticated"
-        >Add Keep</button>
+        >Add Pic</button>
       </div>
 
       <!-- KEEP MODAL FORM -->
@@ -30,7 +30,7 @@
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header bg-primary shadow-sm">
-              <h4 class="modal-title text-white">New Keep</h4>
+              <h4 class="modal-title text-white">New Pic</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body shadow-sm container text-secondary">
@@ -67,7 +67,7 @@
 
                 <div class="row justify-content-center mt-3">
                   <div class="col text-center">
-                    <button type="submit" class="btn btn-secondary btn-lg">Add Keep</button>
+                    <button type="submit" class="btn btn-secondary btn-lg">Add Pic</button>
                   </div>
                 </div>
               </form>
@@ -132,7 +132,7 @@
 
     <div class="col-12 d-flex justify-content-around mb-3">
       <button class="btn btn-outline-warning" @click="toggleVaults">My Vaults</button>
-      <button class="btn btn-outline-info" @click="toggleKeeps">My Keeps</button>
+      <button class="btn btn-outline-info" @click="toggleKeeps">My Pics</button>
     </div>
 
     <div class="col-12 list-container d-flex justify-content-center">
