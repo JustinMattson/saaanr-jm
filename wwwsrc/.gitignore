@@ -2,7 +2,7 @@
 node_modules
 
 # server security
-appsettings*
+appsettings.*
 
 # local env files
 .env.local
