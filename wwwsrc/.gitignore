@@ -1,9 +1,6 @@
 .DS_Store
 node_modules
 
-# server security
-appsettings.*
-
 # local env files
 .env.local
 .env.*.local
