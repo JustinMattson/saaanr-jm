@@ -2,6 +2,35 @@ USE saaanr;
 -- NOTE all tables can have duplicate rows as there is only one primary key on id which does not guarantee uniqueness other columns...
 DROP TABLE profiles;
 
+CREATE TABLE events (
+    id int NOT NULL AUTO_INCREMENT,
+    eventName VARCHAR(255) NOT NULL,
+    startDate DATETIME NOT NULL,
+    endDate DATETIME NOT NULL,
+    venue VARCHAR(255) NOT NULL,
+    website VARCHAR(255),
+    contactName VARCHAR(255),
+    contactEmail VARCHAR(255) NOT NULL,
+    classes VARCHAR(255),
+    INDEX id (id),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO events (
+    id, eventName, startDate, endDate, venue, website, contactName, contactEmail, classes
+    )
+Values (
+    1,
+    "11th Annual Fort Boise Highland Games & 5k Fell Race",
+    "2020-03-13",
+    "2020-03-13",
+    "Parma, ID",
+    "https://fb.me/e/4TR6t04i5",
+    "Chuck McClain",
+    "admin@saaanr.org",
+    "Amateur, Lightweight, Masters, Novice, Women"
+);
+
 CREATE TABLE contacts (
     id int NOT NULL AUTO_INCREMENT,
     firstname VARCHAR(255) NOT NULL,

@@ -65,6 +65,8 @@ namespace SaaaNR
       //NOTE REGISTER SERVICES AND REPOSITORIES
       services.AddTransient<ContactsService>();
       services.AddTransient<ContactsRepository>();
+      services.AddTransient<EventsService>();
+      services.AddTransient<EventsRepository>();
       services.AddTransient<KeepsService>();
       services.AddTransient<KeepsRepository>();
       services.AddTransient<ProfilesService>();

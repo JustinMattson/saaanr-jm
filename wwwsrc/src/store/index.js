@@ -18,6 +18,7 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     contacts: [],
+    events: [],
     publicKeeps: [],
     myKeeps: [],
     myVaults: [],
@@ -29,6 +30,11 @@ export default new Vuex.Store({
     profile: {},
   },
   mutations: {
+    //#event mutation EVENTS
+    setEvents(state, events) {
+      state.events = events;
+    },
+
     //#region mutation KEEPS
     setPublicKeeps(state, keeps) {
       state.publicKeeps = keeps;
@@ -128,6 +134,16 @@ export default new Vuex.Store({
       api.defaults.headers.authorization = "";
     },
 
+    //#region actions EVENTS
+    async getEvents({ commit, dispatch }) {
+      try {
+        let res = await api.get("events");
+        commit("setEvents", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    
     //#region actions KEEPS
     // getKeeps only returns isPrivate = false (Public)
     async getKeeps({ commit, dispatch }) {
